@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scam Link</title>
+  <style>
+    body {
+      background-color: #ffe6f0; /* pastel pink */
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      overflow: hidden;
+    }
+    .intro {
+      font-size: 28px;
+      font-weight: bold;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+    .question {
+      font-size: 32px;
+      font-weight: bold;
+      opacity: 0;
+      animation: beatDrop 2s ease-in-out forwards;
+      animation-delay: 2.5s;
+    }
+    .btn {
+      padding: 10px 20px;
+      margin: 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+      animation-delay: 4s;
+    }
+    .yes {
+      background-color: #a3e4d7; /* pastel teal */
+    }
+    .no {
+      background-color: #f5b7b1; /* pastel coral */
+      position: absolute;
+    }
+    .reaction {
+      font-size: 24px;
+      margin-top: 20px;
+      color: #ff6699;
+      display: none;
+    }
+    .footer {
+      margin-top: 80px;
+      font-size: 20px;
+      color: #555;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+      animation-delay: 6s;
+    }
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      color: #ff3366;
+      animation: floatUp 2s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes beatDrop {
+      0% { transform: translateY(-100px); opacity: 0; }
+      50% { transform: translateY(20px); opacity: 1; }
+      70% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-150px); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="intro">Ladies and gentlemen... please welcome... BB ❤️</div>
+  <div class="question">Bhavesh, will you be my Valentine?</div>
+  <button class="btn yes" onclick="showReaction()">Yes 💖</button>
+  <button class="btn no" id="noBtn">No 🙈</button>
+  <div class="reaction" id="reaction">Yay! You said Yes! 💕✨</div>
+  <div class="footer">This set is better together</div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    noBtn.addEventListener('mouseover', () => {
+      const x = Math.floor(Math.random() * (window.innerWidth - 100));
+      const y = Math.floor(Math.random() * (window.innerHeight - 50));
+      noBtn.style.left = x + 'px';
+      noBtn.style.top = y + 'px';
+    });
+
+    function showReaction() {
+      document.getElementById('reaction').style.display = 'block';
+      createHearts();
+    }
+
+    function createHearts() {
+      for (let i = 0; i < 5; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '💖';
+        heart.style.left = (window.innerWidth / 2 + Math.random() * 100 - 50) + 'px';
+        heart.style.top = (window.innerHeight / 2) + 'px';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 2000);
+      }
+    }
+  </script>
+</body>
+</html>
