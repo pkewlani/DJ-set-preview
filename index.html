@@ -41,6 +41,7 @@
       opacity: 0;
       animation: beatDrop 2s ease-in-out forwards;
       animation-delay: 2.5s;
+      animation-fill-mode: forwards; /* keeps it visible after animation */
     }
 
     .btn {
@@ -91,7 +92,7 @@
       0% { transform: translateY(-150px); opacity: 0; }
       50% { transform: translateY(30px); opacity: 1; }
       70% { transform: translateY(-15px); }
-      100% { transform: translateY(0); }
+      100% { transform: translateY(0); opacity: 1; }
     }
 
     /* Confetti styling */
